@@ -1,22 +1,16 @@
 package main
 
 import (
-	"encoding/json"
 	"net/http"
 
-	"github.com/Samvit20/Todo-API-using-Golang/views"
+	"github.com/Samvit20/Todo-API-using-Golang/controller"
+	"github.com/Samvit20/Todo-API-using-Golang/model"
+	_ "github.com/go-sql-driver/mysql" //mysql driver
 )
 
 func main() {
-	mux := http.NewServeMux()	
-	mux.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {
-		if r.Method ==  http.MethodGet {
-			data := views.Response {
-				Code: http.StatusOK,
-				Body: "ping",
-			}
-			json.NewEncoder(w).Encode(data)
-		}
-	})
+	mux := controller.Register()	
+	db := model.Connect()
+	defer db.Close()
 	http.ListenAndServe("localhost:3000", mux)
 }
