@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"todo-api/structs"
+	// "github.com/Samvit20/Todo-API-using-Golang/tree/master/structs"
 )
 
 func main() {
