@@ -12,7 +12,7 @@ func ping() http.HandlerFunc {
 		if r.Method ==  http.MethodGet {
 			data := views.Response {
 				Code: http.StatusOK,
-				Body: "ping",
+				Body: "pong",
 			}
 			w.WriteHeader(http.StatusOK)
 			json.NewEncoder(w).Encode(data)
