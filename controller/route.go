@@ -8,6 +8,6 @@ import (
 func Register() *http.ServeMux {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/ping", ping())
-	mux.HandleFunc("/", create())
+	mux.HandleFunc("/", crud())
 	return mux
 }
